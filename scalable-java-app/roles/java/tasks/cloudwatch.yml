@@ -1,0 +1,19 @@
+---
+  - name: Downloading packages
+    command: wget https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb
+  
+  - name: Installing packages
+    command: dpkg -i amazon-cloudwatch-agent.deb
+  
+  - name: Create Cloudwatch agent config file
+    template:
+      src: config.json.j2
+      dest: /opt/aws/amazon-cloudwatch-agent/bin/config.json
+  
+  - name: Start Cloudwatch agent
+    apt:
+      name: collectd
+      state: latest
+  
+  - name: Start Cloudwatch agent
+    command: amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json
