@@ -58,7 +58,7 @@ variable "internal" {
   type        = bool
 }
 
-variable "intance_type" {
+variable "instance_type" {
   description = "The ID of the Amazon Machine Image (AMI) to use for ASG"
 }
 
@@ -225,7 +225,7 @@ variable "listener_type" {
   type        = string
 }
 
-variable "intance_warmup_time" {
+variable "instance_warmup_time" {
   description = "Time required to warm up a new instance"
   type        = number
 }

@@ -63,7 +63,7 @@ variable "internal" {
   type        = bool
 }
 
-variable "intance_type" {
+variable "instance_type" {
   description = "The ID of the Amazon Machine Image (AMI) to use for ASG"
 }
 
