@@ -75,7 +75,7 @@ variable "multi_az" {
   type        = bool
 }
 
-variable "delete_auomated_backups" {
+variable "delete_automated_backups" {
   description = "Enable deletion of automated backups when the RDS instance is deleted."
   type        = bool
 }
