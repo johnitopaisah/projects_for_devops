@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "alb-asg" {
-  source                            = "../modules/alb-asc"
+  source                            = "../modules/alb-as"
   ingress_alb_from_port             = var.ingress_alb_from_port
   ingress_alb_to_port               = var.ingress_alb_to_port
   ingress_alb_protocol              = var.ingress_alb_protocol
