@@ -4,49 +4,49 @@ variable "tags" {
   description = "Extra tags to attach to the resources"
 }
 
-variable "region" {
-  description = "The AWS region where it will be created"
-  type        = string
-}
-
 variable "ingress_alb_from_port" {
-  description = "Ingress alb from port"
   type        = number
+  description = "Ingress alb from port"
 }
 
 variable "ingress_alb_to_port" {
-  description = "Ingress alb to port"
   type        = number
+  description = "Ingress alb to port"
 }
 
 variable "ingress_alb_protocol" {
-  description = "Ingress alb protocol"
   type        = string
+  description = "Ingress alb protocol"
 }
 
 variable "ingress_alb_cidr_blocks" {
-  description = "List of starting ports fro cidr ingress rules of the security group."
   type        = list(string)
+  description = "List of starting ports for cidr ingress rules of the security group."
 }
 
 variable "egress_alb_from_port" {
-  description = "Egress alb from port"
   type        = number
+  description = "egress alb from port"
 }
 
 variable "egress_alb_to_port" {
-  description = "Egress alb to port"
   type        = number
+  description = "egress alb to port"
 }
 
 variable "egress_alb_protocol" {
-  description = "Egress alb protocol"
   type        = string
+  description = "egress alb protocol"
 }
 
 variable "egress_alb_cidr_blocks" {
-  description = "List of starting ports fro cidr egress rules of the security group."
   type        = list(string)
+  description = "List of starting ports for cidr egress rules of the security group."
+}
+
+variable "internal" {
+  description = "Whether the load balancer is internal or not"
+  type        = bool
 }
 
 variable "loadbalancer_type" {
@@ -55,24 +55,19 @@ variable "loadbalancer_type" {
 }
 
 variable "ami_id" {
-  description = "The ID of the Amazon Machine Image (AMI) to use for the EC2 intance"
-}
-
-variable "internal" {
-  description = "Whethe theload balancer is internal or not"
-  type        = bool
+  description = "The ID of the Amazon Machine Image (AMI) to use for the EC2 instances."
 }
 
 variable "instance_type" {
-  description = "The ID of the Amazon Machine Image (AMI) to use for ASG"
+  description = "The type of EC2 instance to use for the ASG."
 }
 
 variable "key_name" {
-  description = "The name of the EC2 key pair to use for the instances"
+  description = "The name of the EC2 key pair to use for the instances."
 }
 
 variable "vpc_id" {
-  description = "A list of VPC to use for the resources."
+  description = "The ID of the VPC to use for the resources."
 }
 
 variable "subnets" {
@@ -81,132 +76,132 @@ variable "subnets" {
 }
 
 variable "target_group_port" {
-  description = "Target group port."
+  description = "Target group port"
   type        = number
 }
 
 variable "target_group_protocol" {
-  description = "The Target Group protocol"
+  description = "Target group protocol"
   type        = string
 }
 
 variable "target_type" {
-  description = "The Target type"
+  description = "Target type"
   type        = string
 }
 
-variable "loadbalancer_algorithm" {
+variable "load_balancing_algorithm" {
   description = "Specify the load balancing algorithm type"
   type        = string
 }
 
 variable "health_check_path" {
-  description = "Health cheak path"
+  description = "Health check path"
   type        = string
 }
 
-variable "health_check_poth" {
-  description = "Health cheak port"
+variable "health_check_port" {
+  description = "Health check port"
   type        = number
 }
 
 variable "health_check_protocol" {
-  description = "Health cheak protocol"
+  description = "Health check protocol"
   type        = string
 }
 
 variable "health_check_interval" {
-  description = "Health cheak interval"
+  description = "Health check interval"
   type        = number
 }
 
 variable "health_check_timeout" {
-  description = "Health cheak timeout"
+  description = "Health check timeout"
   type        = number
 }
 
 variable "health_check_healthy_threshold" {
-  description = "Health cheak healthy threshold"
+  description = "Health check healthy threshold"
   type        = number
 }
 
 variable "health_check_unhealthy_threshold" {
-  description = "Health cheak unhealthy threshold"
+  description = "Health check unhealthy threshold"
   type        = number
 }
 
 variable "ingress_asg_cidr_from_port" {
-  description = "Ingress ASG from port"
   type        = number
+  description = "Ingress asg from port"
 }
 
 variable "ingress_asg_cidr_to_port" {
-  description = "Ingress ASG to port"
   type        = number
+  description = "Ingress asg to port"
 }
 
 variable "ingress_asg_cidr_protocol" {
-  description = "Ingress ASG protocol"
   type        = string
+  description = "Ingress asg protocol"
 }
 
 variable "ingress_asg_cidr_blocks" {
-  description = "List of starting ports fro cidr ingress rules of the security group."
   type        = list(string)
+  description = "List of starting ports for cidr ingress rules of the security group."
 }
 
 variable "ingress_asg_sg_from_port" {
-  description = "Ingress ASG from port"
   type        = number
+  description = "Ingress asg from port"
 }
 
 variable "ingress_asg_sg_to_port" {
-  description = "Ingress ASG to port"
   type        = number
+  description = "Ingress asg to port"
 }
 
 variable "ingress_asg_sg_protocol" {
-  description = "Ingress ASG protocol"
   type        = string
+  description = "Ingress asg protocol"
 }
 
 variable "egress_asg_from_port" {
-  description = "Egress ASG from port"
   type        = number
+  description = "egress asg from port"
 }
 
 variable "egress_asg_to_port" {
-  description = "Egress ASG to port"
   type        = number
+  description = "egress asg to port"
 }
 
 variable "egress_asg_protocol" {
-  description = "Egress ASG protocol"
   type        = string
+  description = "egress asg protocol"
 }
 
 variable "egress_asg_cidr_blocks" {
-  description = "List of starting ports fro cidr egress rules of the security group."
   type        = list(string)
+  description = "List of starting ports for sg egress rules of the security group."
 }
 
 variable "public_access" {
-  description = "Whethe the instance is public or not"
+  description = "Whether the instance is public or not"
   type        = bool
 }
 
 variable "max_size" {
-  description = "The maximum size of the autoscale group"
+  description = "Maximum size of something"
   type        = number
 }
 
 variable "min_size" {
-  description = "The minimum size of the autoscale group"
+  description = "Minimum size of something"
   type        = number
 }
 
 variable "desired_capacity" {
-  description = "The number of Amazon EC2 instances that should be running in the group"
+  description = "Desired capacity of something"
   type        = number
 }
 
@@ -221,7 +216,7 @@ variable "listener_protocol" {
 }
 
 variable "user_data" {
-  description = "The user data to provide when launching the instance"
+  description = "user data script"
   type        = string
 }
 
@@ -230,32 +225,32 @@ variable "listener_type" {
   type        = string
 }
 
-variable "intance_warmup_time" {
+variable "instance_warmup_time" {
   description = "Time required to warm up a new instance"
   type        = number
 }
 
 variable "target_value" {
-  description = "Threashod value of asg to start scaling"
+  description = "Threshold value of asg to start scaling"
   type        = number
 }
 
 variable "environment" {
-  description = "The environment for the resources."
   type        = string
+  description = "The environment name for the resources."
 }
 
 variable "owner" {
-  description = "The owner for the resources."
   type        = string
+  description = "Name of the owner"
 }
 
 variable "application" {
-  description = "Name of the application."
   type        = string
+  description = "Name of the application"
 }
 
 variable "cost_center" {
-  description = "The cost center for the resources."
   type        = string
+  description = "Name of cost-center"
 }
