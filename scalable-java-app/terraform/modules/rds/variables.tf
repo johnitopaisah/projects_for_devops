@@ -1,27 +1,37 @@
 variable "tags" {
-  default = {}
-  type    = map(string)
+  default     = {}
+  type        = map(string)
   description = "Extra tags to attach to the RDS resources"
 }
 
 variable "update_rds_endpoint" {
+  type    = bool
   default = true
-  type = bool
 }
 
 variable "region" {
-  description = "Region of the rds"
   type        = string
+  description = "Region of the rds"
 }
 
 variable "environment" {
-  description = "The environment name for the resources"
   type        = string
+  description = "The environment name for the resources."
 }
 
 variable "owner" {
-  description = "Name of the owner for this RDS"
   type        = string
+  description = "Name of the owner for this RDS"
+}
+
+variable "application" {
+  type        = string
+  description = "Name of the application"
+}
+
+variable "cost_center" {
+  type        = string
+  description = "Name of cost-center for this RDS"
 }
 
 variable "db_username" {
@@ -36,22 +46,12 @@ variable "set_secret_manager_password" {
 }
 
 variable "db_password" {
-  description = "The password for the RDS database"
-  type        = string
-}
-
-variable "application" {
-  description = "Name of the application"
-  type        = string
-}
-
-variable "cost_center" {
-  description = "Name of the cost-center for the RDS"
+  description = "Password for RDS"
   type        = string
 }
 
 variable "db_instance_class" {
-  description = "The instance class for the RDS database"
+  description = "The RDS instance class"
   type        = string
 }
 
@@ -61,8 +61,8 @@ variable "set_db_password" {
 }
 
 variable "db_storage_size" {
-  description = "The storage size for the RDS database instance"
-  type        = string
+  description = "The allocated storage size for the RDS instance."
+  type        = number
 }
 
 variable "backup_retention_period" {
@@ -71,7 +71,7 @@ variable "backup_retention_period" {
 }
 
 variable "multi_az" {
-  description = "Enable multi-AZ deployment for the RDS instance"
+  description = "Enable multi-AZ deployment for the RDS instance."
   type        = bool
 }
 
@@ -81,74 +81,75 @@ variable "delete_automated_backups" {
 }
 
 variable "copy_tags_to_snapshot" {
-  description = "Copy tags to DB snopshots created from the RDS instance."
+  description = "Copy tags to DB snapshots created from the RDS instance."
   type        = bool
 }
 
 variable "publicly_accessible" {
-  description = "Allow the RDS instance to be publicly accessible"
+  description = "Allow the RDS instance to be publicly accessible."
   type        = bool
 }
 
 variable "skip_final_snapshot" {
-  description = "Skip the creation fo a final DB snapshot when the RDS instance is deleted."
+  description = "Skip the creation of a final DB snapshot when the RDS instance is deleted."
   type        = bool
 }
 
 variable "apply_immediately" {
-  description = "Apply changes immediately to the RDS instance"
+  description = "Apply changes immediately to the RDS instance."
   type        = bool
 }
 
 variable "db_engine" {
-  description = "The database engine to use for the RDS instance"
+  description = "The database engine"
   type        = string
 }
 
 variable "db_storage_type" {
-  description = "The storage type for the RDS database instance"
+  description = "The storage type for the database"
   type        = string
 }
 
 variable "ingress_from_port" {
-  description = "The ingress port for the RDS security group"
+  description = "The starting port for ingress rules"
   type        = number
 }
 
+variable "ingress_cidr_blocks" {
+  type        = list(string)
+  description = "CIDR block for RDS security group"
+}
+
 variable "ingress_to_port" {
-  description = "The ingress port for the RDS security group"
+  description = "The ending port for ingress rules"
   type        = number
 }
 
 variable "ingress_protocol" {
-  description = "The ingress protocol for the RDS security group"
+  description = "The protocol for ingress rules"
   type        = string
 }
 
-variable "ingress_cidr_blocks" {
-  description = "The ingress CIDR blocks for the RDS security group"
-  type        = list(string)
-}
-
 variable "egress_from_port" {
-  description = "The starting port for the egress rules."
+  description = "The starting port for ingress rules"
   type        = number
 }
 
+variable "egress_cidr_blocks" {
+  type        = list(string)
+  description = "CIDR block for RDS security group"
+}
+
 variable "egress_to_port" {
-  description = "The ending port for the egress rules."
+  description = "The ending port for egress rules"
   type        = number
 }
 
 variable "egress_protocol" {
-  description = "The protocol for the egress rules."
+  description = "The protocol for egress rules"
   type        = string
 }
 
-variable "egress_cidr_blocks" {
-  description = "The CIDR blocks for the egress rules."
-  type        = list(string)
-}
 
 variable "subnet_ids" {
   description = "The IDs of the subnets"
@@ -156,12 +157,12 @@ variable "subnet_ids" {
 }
 
 variable "vpc_id" {
-  description = "The ID of the VPC"
+  description = "Vpc ID in which it needs to create"
   type        = string
 }
 
 variable "parameter_store_secret_name" {
-  description = "Name of the parameter strore secret"
+  description = "Name of the parameter store secret"
   type        = string
 }
 
