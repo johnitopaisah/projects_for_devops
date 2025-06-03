@@ -56,7 +56,7 @@ listener_protocol = "HTTP"
 listener_type = "forward"
 
 # Launch Template Configuration
-ami_id = "ami-04f167a56786e4b09"  # Example AMI ID, replace with your own
+ami_id = "ami-0e60009ccef75a369"  # Example AMI ID, replace with your own
 instance_type = "t2.micro"
 key_name = "petclinic-key-pair"  # Replace with your key pair name
 user_name = <<-EOF
