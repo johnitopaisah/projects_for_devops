@@ -10,6 +10,7 @@
     files:
       - properties.py
       - start.sh
+      - pet-clinic-3.4.0.jar
     
 
     roles:

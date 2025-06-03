@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-JAR_FILE=/home/ubuntu/pet-clinic-1.0.1.jar
+JAR_FILE=/home/ubuntu/pet-clinic-3.4.0.jar
 APP_PROPERTIES=/opt/application.properties
 PROPERTIES_SCRIPT=/home/ubuntu/properties.py
 

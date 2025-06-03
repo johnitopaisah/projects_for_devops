@@ -1,5 +1,18 @@
+packer {
+  required_plugins {
+    amazon = {
+      version = ">= 1.0.0"
+      source  = "github.com/hashicorp/amazon"
+    }
+    ansible = {
+      version = ">= 1.0.0"
+      source  = "github.com/hashicorp/ansible"
+    }
+  }
+}
+
 variable "ami_id" {
-  type = string
+  type    = string
   default = "ami-03f65b8614a860c29"
 }
 
@@ -8,14 +21,14 @@ locals {
 }
 
 source "amazon-ebs" "java-app" {
-  ami_name      = "PACKER-$(local.app_name"
+  ami_name      = "PACKER-${local.app_name}"
   instance_type = "t2.medium"
-  region        = "us-east-1"
-  source_ami    = "${var.ami_id}"
+  region        = "us-west-2"
+  source_ami    = var.ami_id
   ssh_username  = "ubuntu"
   tags = {
-    Env   = "DEMO"
-    Name  = "PACKER-$(local.app_name)"
+    Env  = "DEMO"
+    Name = "PACKER-${local.app_name}"
   }
 }
 
@@ -23,7 +36,6 @@ build {
   sources = ["source.amazon-ebs.java-app"]
 
   provisioner "ansible" {
-    playbook = "java-app.yml"
+    playbook_file = "java-app.yml"
   }
-
 }
