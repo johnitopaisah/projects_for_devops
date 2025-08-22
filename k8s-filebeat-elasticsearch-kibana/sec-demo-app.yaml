@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: second-demo-app
+  namespace: demo-apps
+  labels:
+    app: second-demo-app
+spec:
+  containers:
+    - name: second-demo-app
+      image: busybox
+      command: ['sh', '-c', 'while true; do echo Hello Kubernetes from second-demo-app; sleep 10; done']
